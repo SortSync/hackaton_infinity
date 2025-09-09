@@ -11,21 +11,6 @@ import ThemeToggleButton from "../ThemeToggleButton";
 import { useAuth } from "../../contexts/AuthContext";
 import logo from "../../assets/logo.png"; // caminho da logo
 
-function IsAdmin({ userAdmin }) {
-  return (
-    userAdmin && (
-      <NavLink
-        to="/admin/usuarios"
-        className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-infinity-gray-light transition-colors"
-        style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
-      >
-        <FiServer size={20} />
-        Lista de Usuários
-      </NavLink>
-    )
-  );
-}
-
 function Sidebar() {
   const { logout, user } = useAuth();
 
@@ -34,7 +19,7 @@ function Sidebar() {
     color: "white",
   };
 
-  const userIsAdmin = user.role === "admin";
+  const isAdmin = user.role === "admin";
 
   return (
     // MUDANÇA 1: Adicionamos 'hidden md:flex' para a responsividade
@@ -85,7 +70,16 @@ function Sidebar() {
             Planilhas
           </NavLink>
 
-          <IsAdmin isAdmin={userIsAdmin} />
+          {isAdmin && (
+            <NavLink
+              to="/admin/usuarios"
+              className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-infinity-gray-light transition-colors"
+              style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
+            >
+              <FiServer size={20} />
+              Lista de Usuários
+            </NavLink>
+          )}
 
           <NavLink
             to="/perfil"
