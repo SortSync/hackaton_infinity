@@ -12,8 +12,8 @@ import ProfilePage from "./pages/ProfilePage";
 import MainLayout from "./components/layout/MainLayout";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import CalendarPage from "./pages/CalendarPage";
-import AdminListUsuariosPage from "./pages/AdminListUsersPage";
 import SpreadsheetPage from "./pages/SpreadsheetPage"; // Nova página.
+import AdminListUsersPage from "./pages/AdminListUsersPage";
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
                   <Route path="/planilhas" element={<SpreadsheetPage />} />
                   <Route
                     path="/admin/usuarios"
-                    element={<AdminListUsuariosPage />}
+                    element={<AdminListUsersPage />}
                   />
                 </Route>
               </Route>
